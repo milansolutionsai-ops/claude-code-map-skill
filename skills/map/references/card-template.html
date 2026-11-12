@@ -1,0 +1,33 @@
+<!-- Where-we-are card. LINKS: wherever a real URL exists (a workflow or calendar page, a database view, a task, a preview deploy), make the text an <a href="..."> so the user can tap straight into it. Action chips may be anchors too: <a href="..." style="...chip styles...">Review the task</a>. Render with an inline widget tool if your client has one (for example show_widget in the Claude desktop app); otherwise use the markdown version described in SKILL.md. Replace every <...>. Keep inline styles and CSS variables; no hex colors in HTML; dark mode is automatic. Flow: wrapping HTML boxes (see the FLOW comment); drop it if the client has no single main flow. Status chips: live = bg-success/text-success, draft = bg-warning/text-warning, untested or broken = bg-danger/text-danger. The user's actions are chips in the "You" row. -->
+<h2 class="sr-only"><Client> status card: <one sentence>.</h2>
+<div style="padding:4px 0;font-size:14px;line-height:1.5">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
+    <h3 style="margin:0"><Client></h3>
+    <span style="font-size:13px;color:var(--text-secondary)">where we are, <Mon D></span>
+    <span style="margin-left:auto;font-size:12px;padding:2px 10px;border-radius:999px;background:var(--bg-warning);color:var(--text-warning)"><phase in 3-5 words></span>
+  </div>
+<!-- FLOW: HTML boxes that wrap onto as many rows as the pane needs (a single-row diagram is unreadable in a narrow pane). 3 to 6 boxes, 2 to 4 words each plus a 1 to 4 word state line. Box fill by state: done = bg-success/text-success, the user's hand or next = bg-warning/text-warning, broken or untested = bg-danger/text-danger, not started = surface-1 with border. A branch is one extra box with a dashed border and its condition as the state line. -->
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 14px">
+    <div style="min-width:150px;padding:10px 12px;border-radius:8px;background:var(--bg-success)"><div style="font-size:14px;font-weight:500;color:var(--text-success)"><Trigger></div><div style="font-size:12px;color:var(--text-success)">done</div></div>
+    <i class="ti ti-arrow-right" aria-hidden="true" style="font-size:18px;color:var(--text-muted)"></i>
+    <div style="min-width:150px;padding:10px 12px;border-radius:8px;background:var(--bg-warning)"><div style="font-size:14px;font-weight:500;color:var(--text-warning)"><Step></div><div style="font-size:12px;color:var(--text-warning)">your hand</div></div>
+    <i class="ti ti-arrow-right" aria-hidden="true" style="font-size:18px;color:var(--text-muted)"></i>
+    <div style="min-width:150px;padding:10px 12px;border-radius:8px;border:1px solid var(--border-strong);background:var(--surface-1)"><div style="font-size:14px;font-weight:500"><Step></div><div style="font-size:12px;color:var(--text-secondary)"><state></div></div>
+    <i class="ti ti-arrow-right" aria-hidden="true" style="font-size:18px;color:var(--text-muted)"></i>
+    <div style="min-width:150px;padding:10px 12px;border-radius:8px;border:1px dashed var(--border-strong);background:var(--bg-danger)"><div style="font-size:14px;font-weight:500;color:var(--text-danger)"><Branch></div><div style="font-size:12px;color:var(--text-danger)">if no-show, untested</div></div>
+  </div>
+  <table style="width:100%;border-collapse:collapse;margin:8px 0 14px">
+    <thead><tr style="color:var(--text-secondary);font-size:12px;text-align:left"><th style="padding:6px 8px;border-bottom:1px solid var(--border);font-weight:500">What is built</th><th style="padding:6px 8px;border-bottom:1px solid var(--border);font-weight:500">Status</th><th style="padding:6px 8px;border-bottom:1px solid var(--border);font-weight:500">Where</th></tr></thead>
+    <tbody>
+      <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border)"><Flow name></td><td style="padding:6px 8px;border-bottom:1px solid var(--border)"><span style="font-size:12px;padding:2px 8px;border-radius:999px;background:var(--bg-success);color:var(--text-success)">live</span></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text-secondary)"><a href="<url>" style="color:var(--text-accent)"><click path></a></td></tr>
+      <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border)"><Flow name></td><td style="padding:6px 8px;border-bottom:1px solid var(--border)"><span style="font-size:12px;padding:2px 8px;border-radius:999px;background:var(--bg-danger);color:var(--text-danger)">untested</span></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text-secondary)"><click path></td></tr>
+    </tbody>
+  </table>
+  <table style="width:100%;border-collapse:collapse">
+    <thead><tr style="color:var(--text-secondary);font-size:12px;text-align:left"><th style="padding:6px 8px;border-bottom:1px solid var(--border);font-weight:500">Waiting on</th><th style="padding:6px 8px;border-bottom:1px solid var(--border);font-weight:500">What</th><th style="padding:6px 8px;border-bottom:1px solid var(--border);font-weight:500">Since</th></tr></thead>
+    <tbody>
+      <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border)"><Client contact></td><td style="padding:6px 8px;border-bottom:1px solid var(--border)"><what, comma separated></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text-secondary)"><Mon D></td></tr>
+      <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text-accent)">You</td><td style="padding:6px 8px;border-bottom:1px solid var(--border)"><span style="font-size:13px;padding:3px 9px;border:1px solid var(--border-accent);border-radius:var(--radius);color:var(--text-accent);margin-right:6px;white-space:nowrap;display:inline-block;margin-bottom:4px"><action></span><span style="font-size:13px;padding:3px 9px;border:1px solid var(--border-accent);border-radius:var(--radius);color:var(--text-accent);white-space:nowrap;display:inline-block;margin-bottom:4px"><action></span></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text-secondary)"><Mon D></td></tr>
+    </tbody>
+  </table>
+</div>

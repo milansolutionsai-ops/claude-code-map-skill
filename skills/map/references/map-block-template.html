@@ -1,0 +1,33 @@
+<!-- Map block. Render with an inline widget tool if your client has one (for example show_widget in the Claude desktop app); otherwise use the text version in SKILL.md. Replace every <...>. Flow: wrapping HTML boxes (see the FLOW comment), 3 to 6 of them; more than that means two blocks. The "Your call" row exists ONLY for a real decision (business logic, money, who gets notified, irreversible, reaches a real person). Otherwise delete that row. A and B are labelled chips, not buttons: the user types A or B in the chat. Keep labels as "A: ..." and "B: ...". -->
+<h2 class="sr-only">Map block for <client> <flow>: the flow, where it lives, what is not done<, and one decision>.</h2>
+<div style="padding:4px 0;font-size:14px;line-height:1.5">
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+    <span style="font-size:12px;color:var(--text-muted)">Map</span>
+    <h3 style="margin:0"><Client> <flow name></h3>
+    <span style="margin-left:auto;font-size:12px;padding:2px 10px;border-radius:999px;background:var(--bg-warning);color:var(--text-warning)"><state in 3 words></span>
+  </div>
+<!-- FLOW: HTML boxes that wrap onto as many rows as the pane needs (a single-row diagram is unreadable in a narrow pane). 3 to 6 boxes, 2 to 4 words each plus a 1 to 4 word state line. Box fill by state: done = bg-success/text-success, the user's hand or next = bg-warning/text-warning, broken or untested = bg-danger/text-danger, not started = surface-1 with border. A branch is one extra box with a dashed border and its condition as the state line. -->
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 14px">
+    <div style="min-width:150px;padding:10px 12px;border-radius:8px;background:var(--bg-success)"><div style="font-size:14px;font-weight:500;color:var(--text-success)"><Trigger></div><div style="font-size:12px;color:var(--text-success)">done</div></div>
+    <i class="ti ti-arrow-right" aria-hidden="true" style="font-size:18px;color:var(--text-muted)"></i>
+    <div style="min-width:150px;padding:10px 12px;border-radius:8px;background:var(--bg-warning)"><div style="font-size:14px;font-weight:500;color:var(--text-warning)"><Step></div><div style="font-size:12px;color:var(--text-warning)">your hand</div></div>
+    <i class="ti ti-arrow-right" aria-hidden="true" style="font-size:18px;color:var(--text-muted)"></i>
+    <div style="min-width:150px;padding:10px 12px;border-radius:8px;border:1px solid var(--border-strong);background:var(--surface-1)"><div style="font-size:14px;font-weight:500"><Step></div><div style="font-size:12px;color:var(--text-secondary)"><state></div></div>
+    <i class="ti ti-arrow-right" aria-hidden="true" style="font-size:18px;color:var(--text-muted)"></i>
+    <div style="min-width:150px;padding:10px 12px;border-radius:8px;border:1px dashed var(--border-strong);background:var(--bg-danger)"><div style="font-size:14px;font-weight:500;color:var(--text-danger)"><Branch></div><div style="font-size:12px;color:var(--text-danger)">if no-show, untested</div></div>
+  </div>
+  <table style="width:100%;border-collapse:collapse;margin-top:6px">
+    <tbody>
+      <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text-secondary);width:120px">Where</td><td style="padding:6px 8px;border-bottom:1px solid var(--border)"><a href="<url>" style="color:var(--text-accent)"><click path></a> <span style="color:var(--text-muted)">(plain text when there is no URL)</span></td></tr>
+      <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text-secondary)">Not yet</td><td style="padding:6px 8px;border-bottom:1px solid var(--border)"><untested, half done, fragile; or "nothing"></td></tr>
+      <tr><td style="padding:6px 8px;color:var(--text-accent)">Your call</td><td style="padding:6px 8px">
+        <div><the question, one sentence></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+          <span style="font-size:13px;padding:5px 12px;border:1px solid var(--border-accent);border-radius:var(--radius);background:var(--bg-accent);color:var(--text-accent)">A: <option A></span>
+          <span style="font-size:13px;padding:5px 12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-1);color:var(--text-primary)">B: <option B></span>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:6px">Type A or B in the chat</div>
+      </td></tr>
+    </tbody>
+  </table>
+</div>
